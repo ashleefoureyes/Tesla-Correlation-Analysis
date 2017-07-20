@@ -2,6 +2,12 @@ import datetime as dt
 import time
 import pandas as pd
 import pandas_datareader.data as web
+import bokeh
+
+
+'''
+Tesla Stock Information Load
+'''
 
 #set keys
 tsla_open = 'Open'
@@ -28,7 +34,31 @@ for i in range (len(df)):
 
 
 df['dates'] = dates
-prices = []
+
+
 
 dataFrame = pd.DataFrame(df)
-print(dataFrame)
+
+'''
+oil prices
+'''
+
+#price per barrel
+
+url = "https://www.quandl.com/api/v3/datasets/CHRIS/CME_CL1.csv"
+oil_prices = pd.read_csv(url, index_col=0, parse_dates=True, )
+oil_prices.sort_index(inplace=True)
+oil_prices_recent = oil_prices['Last']
+oil_prices['PctCh'] = oil_prices.Last.pct_change()
+
+#set date range
+
+oil_dataframe = oil_prices_recent[(start < oil_prices_recent.index) & (oil_prices_recent.index < end)]
+
+
+
+
+
+
+
+
