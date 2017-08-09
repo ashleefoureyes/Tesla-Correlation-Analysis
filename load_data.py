@@ -4,8 +4,8 @@ import pandas as pd
 from pandas_datareader import data, wb
 
 # define start and end dates
-start_date = '2016-06-26'
-end_date = '2016-12-31'
+start_date = '2017-01-01'
+end_date = '2017-08-01'
 
 # load data from sources
 ford = data.DataReader("NYSE:F", "google", start_date, end_date)
