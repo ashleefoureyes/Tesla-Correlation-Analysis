@@ -26,7 +26,7 @@ stocks.reset_index(inplace=True)
 # p = Scatter(stocks, x='Date', y='TSLA', title='TSLA Close Price', xlabel = 'Date', ylabel='Close Price')
 
 p = Line(stocks, x='Date')
-output_file("scatter.html")
+output_file("close.html")
 
 show(p)
 
@@ -90,7 +90,7 @@ for i in range(N):
 p2 = figure(x_range=factors, y_range=factors)
 
 p2.rect(x, y, color=colors, width=1, height=1)
-output_file("heat.html")
+output_file("heatmap.html")
 show(p2)
 
 
@@ -108,7 +108,7 @@ oil_prices['PctCh'] = oil_prices.Last.pct_change()
 
 #set date range
 
-oil_dataframe = oil_prices_recent[(start < oil_prices_recent.index) & (oil_prices_recent.index < end)]
+oil_dataframe = oil_prices_recent[(start_date < oil_prices_recent.index) & (oil_prices_recent.index < end_date)]
 
 
 
